@@ -1,0 +1,10 @@
+﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=39ef3cc5_002Dddb4_002D44e8_002D83c2_002D510fcba5295d/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="Application_Should_Not_HaveDependencyOnOtherProject" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;MSTest::27DC89F7-C5B4-4664-9F13-76C82B8D3339::net7.0::Trails.Tests.ArchitectureTests.Application_Should_Not_HaveDependencyOnOtherProject&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;MSTest::27DC89F7-C5B4-4664-9F13-76C82B8D3339::net7.0::Trails.Tests.ArchitectureTests.Infra_Should_Not_HaveDependencyOnOtherProject&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;MSTest::27DC89F7-C5B4-4664-9F13-76C82B8D3339::net7.0::Trails.Tests.ArchitectureTests.Presentation_Should_Not_HaveDependencyOnOtherProject&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;MSTest::27DC89F7-C5B4-4664-9F13-76C82B8D3339::net7.0::Trails.Tests.ArchitectureTests.Handler_Should_Have_DependencyOnDomain&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;MSTest::27DC89F7-C5B4-4664-9F13-76C82B8D3339::net7.0::Trails.Tests.ArchitectureTests.Controllers_Should_HaveDependencyOnMediatR&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>
