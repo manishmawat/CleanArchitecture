@@ -2,9 +2,9 @@
 using Microsoft.EntityFrameworkCore;
 namespace CQRSMediatREFCore.Data
 {
-    public class TrailDbContext : DbContext
+    public class TrailInMemoryDbContext : DbContext
     {
-        public TrailDbContext(DbContextOptions<TrailDbContext> options) : base(options)
+        public TrailInMemoryDbContext(DbContextOptions<TrailDbContext> options) : base(options)
         { }
 
         public DbSet<Trail> Trails { get; set; }
