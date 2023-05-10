@@ -1,12 +1,12 @@
 ﻿using CQRSMediatREFCore.Entities;
 
-namespace CQRSMediatREFCore.Repository
+namespace CQRSMediatREFCore.Data.Repository
 {
-    public class FakeDataStore:IRepository
+    public class FakeTrailDataStore : ITrailRepository
     {
         private readonly List<Trail> _trails;
 
-        public FakeDataStore()
+        public FakeTrailDataStore()
         {
             _trails = new();
         }
@@ -39,8 +39,8 @@ namespace CQRSMediatREFCore.Repository
             var oldTrail = _trails.Where(x => x.Id == trail.Id)?.FirstOrDefault();
             if (oldTrail != null)
             {
-                oldTrail.Distance=trail.Distance;
-                oldTrail.Name=trail.Name;
+                oldTrail.Distance = trail.Distance;
+                oldTrail.Name = trail.Name;
             }
 
             return Task.FromResult(oldTrail!);
@@ -48,7 +48,7 @@ namespace CQRSMediatREFCore.Repository
 
         public Task<bool> DeleteTrail(Guid id)
         {
-            return Task.FromResult(_trails.RemoveAll(x => x.Id == id)==0);
+            return Task.FromResult(_trails.RemoveAll(x => x.Id == id) == 0);
         }
     }
 }

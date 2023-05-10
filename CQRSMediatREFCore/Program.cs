@@ -1,4 +1,6 @@
-using CQRSMediatREFCore.Repository;
+using CQRSMediatREFCore.Data;
+using CQRSMediatREFCore.Data.Repository;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -6,7 +8,11 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(Program).Assembly));
-builder.Services.AddSingleton<IRepository,FakeDataStore>();
+
+builder.Services.AddDbContext<TrailDbContext>(opt => opt.UseInMemoryDatabase("Trails"));
+
+//builder.Services.AddSingleton<ITrailRepository,FakeTrailDataStore>();
+builder.Services.AddTransient<ITrailRepository,TrailRepository>();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

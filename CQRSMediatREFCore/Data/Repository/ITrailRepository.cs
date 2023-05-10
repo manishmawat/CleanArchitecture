@@ -1,12 +1,12 @@
 ﻿using CQRSMediatREFCore.Entities;
 
-namespace CQRSMediatREFCore.Repository
+namespace CQRSMediatREFCore.Data.Repository
 {
-    public interface IRepository
+    public interface ITrailRepository
     {
         //Get
         Task<IEnumerable<Trail>> GetTrails();
-        
+
         //Get 
         Task<Trail?> GetTrail(Guid id);
 
