@@ -11,9 +11,9 @@ namespace TrailWalker.Controllers
     [ApiController]
     public class TrailController : ControllerBase
     {
-        private readonly IMediator _mediator;
+        private readonly ISender _mediator;
 
-        public TrailController(IMediator mediator)
+        public TrailController(ISender mediator)
         {
             _mediator = mediator;
         }
@@ -24,10 +24,18 @@ namespace TrailWalker.Controllers
             return await _mediator.Send(new GetAllTrailsQuery());
         }
 
+        //[HttpGet]
+        //public async Task<ActionResult<Trail>> GetTrail(GetTrailByIdQuery query)
+        //{
+        //    return await _mediator.Send(query);
+        //}
+
         [HttpPost]
         public async Task<ActionResult<Guid>> AddTrail(CreateTrailCommand command)
         {
             return await _mediator.Send(command);
+            //var result = await _mediator.Send(command);
+            //return CreatedAtAction(nameof(AddTrail), new { id = result }, new JsonResponse<Guid>(result));
         }
     }
 }

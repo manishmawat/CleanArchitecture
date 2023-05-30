@@ -5,11 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 using Application.Common.Interfaces;
 using Domain;
+using Domain.Common;
 using MediatR;
 
 namespace Application.Trails.Commands
 {
-    public record CreateTrailCommand:IRequest<Guid>
+    public record CreateTrailCommand:IRequest<Guid>, ICommand
     {
         //public City City { get; set; }
         public string TrailName { get; set; }

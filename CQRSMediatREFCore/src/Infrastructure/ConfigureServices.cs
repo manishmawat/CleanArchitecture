@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Application.Common.Behaviors;
 using Application.Common.Interfaces;
 using Infrastructure.Persistence;
+using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Configuration;
@@ -33,6 +35,13 @@ namespace Infrastructure
             services.AddScoped<ITrailDbContext>(provider => provider.GetRequiredService<TrailDbContext>());
             services.AddScoped<ITrailRepository, TrailRepository>();
             services.AddScoped<TrailDbContextInitialiser>();
+
+            //Add Pipeline behaviors, add in the sequence in which you want to execute.
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(UnhandledExceptBehavior<,>));
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(PerformanceBehavior<,>));
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(AuthorizeBehavior<,>));
+            
+            
             return services;
         }
     }

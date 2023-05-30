@@ -1,20 +1,34 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Application.Common.Interfaces;
 using Domain;
 using MediatR;
 
 namespace Application.Trails.Queries
 {
-    public record GetTrailByIdQuery(Guid trailId) : IRequest<Trail>;
+    public record GetTrailByIdQuery(Guid trailId) : IRequest<Trail?>;
 
-    public class GetTrailByIdQueryHandler : IRequestHandler<GetTrailByIdQuery, Trail>
+    public class GetTrailByIdQueryHandler : IRequestHandler<GetTrailByIdQuery, Trail?>
     {
-        public Task<Trail> Handle(GetTrailByIdQuery request, CancellationToken cancellationToken)
+        private readonly ITrailRepository _trailRepository;
+
+        public GetTrailByIdQueryHandler(ITrailRepository trailRepository)
         {
-            throw new NotImplementedException();
+            _trailRepository = trailRepository;
+        }
+        public Task<Trail?> Handle(GetTrailByIdQuery request, CancellationToken cancellationToken)
+        {
+            if (request is not null)
+            {
+                return _trailRepository.GetTrail(request.trailId);
+            }
+
+            //TODO:Add Response Value type
+            return null;
         }
     }
 }
