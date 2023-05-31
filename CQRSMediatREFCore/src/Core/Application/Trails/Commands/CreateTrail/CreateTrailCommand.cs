@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Application.Common.Interfaces;
 using Domain;
 using Domain.Common;
+using Domain.Events;
 using MediatR;
 
 namespace Application.Trails.Commands
@@ -35,6 +36,8 @@ namespace Application.Trails.Commands
                 Distance = request.Distance,
                 TrailDescription = request.TrailDescription,
             };
+
+            trail.AddDomainEvent(new TrailCreatedEvent(trail));
             return _trailRepository.AddTrail(trail);
         }
     }

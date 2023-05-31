@@ -13,5 +13,6 @@ namespace Domain
         public string TrailDescription { get; set;}
         public double Distance { get; set; }
         public City City { get; set; }
+
     }
 }
