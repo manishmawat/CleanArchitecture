@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CQRSMediatREFCore", "CQRSMediatREFCore.csproj", "{4FB10ABB-3DAB-455C-A67B-753CF4312721}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{742B8716-D111-408E-8B14-25D948F59F88}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{E3B74ADC-562A-44EC-BE8D-83204D934207}"
@@ -17,7 +15,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application", "src\Core\App
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure", "src\Infrastructure\Infrastructure.csproj", "{98E6CAFD-341E-4033-B7F8-05FF3DBB6BBB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrailWalker", "src\UI\TrailWalker\TrailWalker.csproj", "{259C5E15-4EF2-44FE-83E9-F99D75E241EF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TrailWalker", "src\UI\TrailWalker\TrailWalker.csproj", "{259C5E15-4EF2-44FE-83E9-F99D75E241EF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,10 +23,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{4FB10ABB-3DAB-455C-A67B-753CF4312721}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4FB10ABB-3DAB-455C-A67B-753CF4312721}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4FB10ABB-3DAB-455C-A67B-753CF4312721}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4FB10ABB-3DAB-455C-A67B-753CF4312721}.Release|Any CPU.Build.0 = Release|Any CPU
 		{0020C229-78F0-4A24-93E9-22E6F412F5BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{0020C229-78F0-4A24-93E9-22E6F412F5BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0020C229-78F0-4A24-93E9-22E6F412F5BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
