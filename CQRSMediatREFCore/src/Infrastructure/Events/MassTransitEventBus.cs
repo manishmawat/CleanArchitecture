@@ -7,10 +7,10 @@ using Application.Common.Events;
 
 namespace Infrastructure.Events
 {
-    public class MasTransitEventBus:IEventBus
+    public class MassTransitEventBus:IEventBus
     {
         private readonly List<object> _messagesToPublish = new List<object>();
-        public MasTransitEventBus()
+        public MassTransitEventBus()
         {
             
         }

@@ -2,6 +2,7 @@
 using System.Reflection;
 using Application;
 using Application.Trails.Queries;
+using Azure.Identity;
 using Infrastructure;
 
 namespace TrailWalker

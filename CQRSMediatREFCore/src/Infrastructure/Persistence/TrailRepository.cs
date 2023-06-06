@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Application.Common.Interfaces;
 using Domain;
+using Infrastructure.Common;
+using MediatR;
 using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Persistence
@@ -12,9 +14,11 @@ namespace Infrastructure.Persistence
     public class TrailRepository:ITrailRepository
     {
         private readonly ITrailDbContext _dbContext;
-        public TrailRepository(ITrailDbContext dbContext)
+        private readonly IMediator _mediator;
+        public TrailRepository(ITrailDbContext dbContext, IMediator mediator)
         {
             _dbContext = dbContext;
+            _mediator = mediator;
         }
         public Task<IEnumerable<Trail>> GetTrails()
         {
@@ -53,9 +57,10 @@ namespace Infrastructure.Persistence
             return true;
         }
 
-        public Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
+        public async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
         {
-            return _dbContext.SaveChangesAsync(cancellationToken);
+            await _mediator.DispatchDomainEvent(_dbContext);
+            return await _dbContext.SaveChangesAsync(cancellationToken);
         }
     }
 }

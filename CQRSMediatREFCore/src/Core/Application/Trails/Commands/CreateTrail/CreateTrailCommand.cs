@@ -38,6 +38,7 @@ namespace Application.Trails.Commands
             };
 
             trail.AddDomainEvent(new TrailCreatedEvent(trail));
+
             return _trailRepository.AddTrail(trail);
         }
     }

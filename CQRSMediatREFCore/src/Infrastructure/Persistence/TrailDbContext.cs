@@ -9,14 +9,18 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Persistence
 {
-    public class TrailDbContext : DbContext,ITrailDbContext
+    public class TrailDbContext : ITrailDbContext
     {
         public TrailDbContext(DbContextOptions<TrailDbContext> context) : base(context)
         {
 
         }
 
-        public DbSet<Trail> Trails => Set<Trail>();
-        public DbSet<City> Cities => Set<City>();
+        public override DbSet<Trail> Trails => Set<Trail>();
+        public override DbSet<City> Cities => Set<City>();
+        //public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
+        //{
+        //    throw new NotImplementedException();
+        //}
     }
 }

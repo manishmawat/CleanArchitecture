@@ -8,11 +8,14 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Application.Common.Interfaces
 {
-    public interface ITrailDbContext
+    public abstract class ITrailDbContext:DbContext
     {
-        DbSet<Trail> Trails { get; }
-        DbSet<City> Cities { get; }
+        public ITrailDbContext(DbContextOptions context) :base(context)
+        {
+            
+        }
+        public abstract DbSet<Trail> Trails { get; }
+        public abstract DbSet<City> Cities { get; }
 
-        Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);
     }
 }
