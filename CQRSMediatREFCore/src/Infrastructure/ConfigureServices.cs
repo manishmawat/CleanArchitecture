@@ -17,6 +17,7 @@ using System.Reflection;
 using Application.Trails.Commands.CreateTrail.Mapper;
 
 using Azure.Identity;
+using Infrastructure.Email;
 using Infrastructure.Utility;
 using static System.Net.WebRequestMethods;
 
@@ -80,6 +81,13 @@ namespace Infrastructure
             services.AddScoped<ITrailDbContext>(provider => provider.GetRequiredService<TrailDbContext>());
             services.AddScoped<ITrailRepository, TrailRepository>();
             services.AddScoped<TrailDbContextInitialiser>();
+
+            //Email Configuration setup
+            var emailConfig = configuration.GetSection("EmailConfiguration").Get<EmailConfiguration>();
+
+            services.AddSingleton(emailConfig ?? throw new ArgumentException());
+
+            services.AddScoped<IEmailSender, EmailSender>();
 
             //services.AddMediatR(cfg =>
             //    cfg.RegisterServicesFromAssembly(typeof(Events.TrailCreatedEventHandler).Assembly));
