@@ -12,8 +12,18 @@ namespace Application.Trails.Commands.CreateTrail
         public CreateTrailCommandValidator()
         {
             RuleFor(v => v.TrailName)
-                .MaximumLength(200)
-                .NotEmpty();
+                .NotNull()
+                .NotEmpty()
+                .MaximumLength(200);
+
+            RuleFor(v => v.TrailDescription)
+                .NotNull()
+                .NotEmpty()
+                .MinimumLength(20);
+
+            RuleFor(v => v.Distance)
+                .NotEmpty()
+                .GreaterThan(0);
         }
     }
 }
