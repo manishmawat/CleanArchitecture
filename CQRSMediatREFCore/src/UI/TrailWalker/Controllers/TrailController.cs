@@ -1,6 +1,8 @@
-﻿using Application.Trails.Commands;
+﻿using Application.Contracts;
+using Application.Trails.Commands;
 using Application.Trails.Queries;
 using Domain;
+using Domain.Maybe;
 using FluentValidation;
 using MediatR;
 using Microsoft.AspNetCore.Http;
@@ -27,11 +29,11 @@ namespace TrailWalker.Controllers
             return await _mediator.Send(new GetAllTrailsQuery());
         }
 
-        //[HttpGet]
-        //public async Task<ActionResult<Trail>> GetTrail(GetTrailByIdQuery query)
-        //{
-        //    return await _mediator.Send(query);
-        //}
+        [HttpGet("GetById")]
+        public async Task<ActionResult<Maybe<TrailByIdResponse>>> GetTrail([FromQuery]Guid trailGuid)
+        {
+            return await _mediator.Send(new GetTrailByIdQuery(trailGuid));
+        }
 
         [HttpPost]
         public async Task<ActionResult<Guid>> AddTrail(CreateTrailCommand command)
@@ -42,8 +44,6 @@ namespace TrailWalker.Controllers
                 return BadRequest(validationResult);
             }
             return await _mediator.Send(command);
-            //var result = await _mediator.Send(command);
-            //return CreatedAtAction(nameof(AddTrail), new { id = result }, new JsonResponse<Guid>(result));
         }
     }
 }

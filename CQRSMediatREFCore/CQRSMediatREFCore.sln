@@ -8,6 +8,9 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{E3B74ADC-562A-44EC-BE8D-83204D934207}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ops", "ops", "{3D2695BB-D3D0-4D46-994A-33E41FAFCCD2}"
+	ProjectSection(SolutionItems) = preProject
+		ops\AppService.bicep = ops\AppService.bicep
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "src\Core\Domain\Domain.csproj", "{0020C229-78F0-4A24-93E9-22E6F412F5BD}"
 EndProject

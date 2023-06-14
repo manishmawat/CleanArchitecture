@@ -30,7 +30,8 @@ namespace Infrastructure
             services.AddMediatR(cfg =>
                 cfg.RegisterServicesFromAssembly(typeof(Events.TrailCreatedEventHandler).Assembly));
             configuration.AddAzureKeyVault(
-                new Uri(configuration.GetValue<string>(Constants.KeyVaultConfiguration__KeyVaultURL)?? $"https://trailwalker.vault.azure.net/"), 
+                new Uri(configuration.GetValue<string>(Constants.KeyVaultConfiguration__KeyVaultURL) ??
+                        $"https://trailwalker.vault.azure.net/"),
                 new DefaultAzureCredential());
 
             //services.AddMassTransit(x =>

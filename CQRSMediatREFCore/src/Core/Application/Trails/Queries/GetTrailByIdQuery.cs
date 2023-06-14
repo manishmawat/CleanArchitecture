@@ -5,14 +5,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Application.Common.Interfaces;
+using Application.Contracts;
 using Domain;
+using Domain.Maybe;
 using MediatR;
 
 namespace Application.Trails.Queries
 {
-    public record GetTrailByIdQuery(Guid trailId) : IRequest<Trail?>;
+    public record GetTrailByIdQuery(Guid TrailId) : IRequest<Maybe<TrailByIdResponse>>;
 
-    public class GetTrailByIdQueryHandler : IRequestHandler<GetTrailByIdQuery, Trail?>
+    public class GetTrailByIdQueryHandler : IRequestHandler<GetTrailByIdQuery, Maybe<TrailByIdResponse>>
     {
         private readonly ITrailRepository _trailRepository;
 
@@ -20,15 +22,33 @@ namespace Application.Trails.Queries
         {
             _trailRepository = trailRepository;
         }
-        public Task<Trail?> Handle(GetTrailByIdQuery request, CancellationToken cancellationToken)
+
+        public async Task<Maybe<TrailByIdResponse>> Handle(GetTrailByIdQuery request,
+            CancellationToken cancellationToken)
         {
-            if (request is not null)
+            if (request.TrailId == default)
             {
-                return _trailRepository.GetTrail(request.trailId);
+                return Maybe<TrailByIdResponse>.None;
             }
 
-            //TODO:Add Response Value type
-            return null;
+            Maybe<Trail> mayBeResponse = await _trailRepository.GetTrail(request.TrailId);
+
+            if (mayBeResponse.HasNoValue)
+            {
+                return Maybe<TrailByIdResponse>.None;
+            }
+
+            Trail trail = mayBeResponse.Value;
+
+            var response = new TrailByIdResponse()
+            {
+                TrailName = trail.TrailName,
+                TrailDescription = trail.TrailDescription,
+                Distance = trail.Distance,
+                CityName = trail.City?.Name ?? string.Empty
+            };
+
+            return response;
         }
     }
 }

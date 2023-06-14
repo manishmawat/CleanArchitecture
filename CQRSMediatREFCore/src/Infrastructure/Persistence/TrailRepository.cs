@@ -26,9 +26,10 @@ namespace Infrastructure.Persistence
             return Task.FromResult(response);
         }
 
-        public Task<Trail?> GetTrail(Guid id)
+        public async Task<Trail> GetTrail(Guid id)
         {
-            return _dbContext.Trails.FirstOrDefaultAsync(x => x.Id == id);
+            var response = await _dbContext.Trails.FirstOrDefaultAsync(x => x.Id == id);
+            return response!;
         }
 
         public async Task<Guid> AddTrail(Trail trail)
