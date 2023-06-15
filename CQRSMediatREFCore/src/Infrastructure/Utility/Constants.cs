@@ -13,5 +13,8 @@ namespace Infrastructure.Utility
         public static readonly string UseInMemoryDatabase = "UseInMemoryDatabase";
         public static readonly string UseSqlite = "UseSqlite";
         public static readonly string DefaultConnection = "DefaultConnection";
+
+        public static readonly string TrailCreated_IsEmailSenderEnabled = "Email__EnableEmailSender";
+        public static readonly string TrailCreated_FromEmail = "Email__FromEmail";
     }
 }

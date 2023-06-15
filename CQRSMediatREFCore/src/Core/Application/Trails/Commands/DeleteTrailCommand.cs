@@ -3,18 +3,24 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Application.Common.Interfaces;
 using Domain.Common;
 using MediatR;
 
 namespace Application.Trails.Commands
 {
-    public record DeleteTrailCommand(Guid id) : IRequest, ICommand;
+    public record DeleteTrailCommand(Guid id) : ICommand<bool>;
 
-    public class DeleteTrailCommandHandler:IRequestHandler<DeleteTrailCommand>
+    public class DeleteTrailCommandHandler : IRequestHandler<DeleteTrailCommand, bool>
     {
-        public Task Handle(DeleteTrailCommand request, CancellationToken cancellationToken)
+        private readonly ITrailRepository _trailRepository;
+        public DeleteTrailCommandHandler(ITrailRepository trailRepository)
         {
-            throw new NotImplementedException();
+            _trailRepository = trailRepository;
+        }
+        public async Task<bool> Handle(DeleteTrailCommand request, CancellationToken cancellationToken)
+        {
+            return await _trailRepository.DeleteTrail(request.id);
         }
     }
 }

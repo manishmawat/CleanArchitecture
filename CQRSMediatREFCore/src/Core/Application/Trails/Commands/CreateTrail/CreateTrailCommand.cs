@@ -11,7 +11,7 @@ using MediatR;
 
 namespace Application.Trails.Commands
 {
-    public record CreateTrailCommand:IRequest<Guid>, ICommand
+    public record CreateTrailCommand: ICommand<Guid>
     {
         //public City City { get; set; }
         public string TrailName { get; set; }

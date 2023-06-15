@@ -9,7 +9,7 @@ using MediatR;
 
 namespace Application.Trails.Commands
 {
-    public record UpdateTrailCommand(Trail trail) : IRequest<Trail>, ICommand;
+    public record UpdateTrailCommand(Trail trail) : ICommand<Trail>;
 
     public class UpdateTrailCommandHandler:IRequestHandler<UpdateTrailCommand,Trail>
     {

@@ -45,5 +45,11 @@ namespace TrailWalker.Controllers
             }
             return await _mediator.Send(command);
         }
+
+        [HttpDelete]
+        public async Task<ActionResult<bool>> DeleteTrail([FromQuery] Guid trailId)
+        {
+            return await _mediator.Send(new DeleteTrailCommand(trailId));
+        }
     }
 }
